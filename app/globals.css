@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f9f9f9;
+  --foreground: #242424;
+  --border: #e5e5e5;
+  --input: #ffffff;
+  --primary: #1b3022;
+  --primary-foreground: #ffffff;
+  --accent: #d4af37;
+  --accent-foreground: #ffffff;
+  --secondary: #e8ebe9;
+  --muted: #eaeaea;
+  --muted-foreground: #666666;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 24px;
+  --radius: var(--radius-lg);
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-headings: var(--font-pt-serif), ui-serif, Georgia, "Times New Roman",
+    serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-headings: var(--font-pt-serif), ui-serif, Georgia, "Times New Roman",
+    serif;
+  --font-sans: var(--font-body);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
