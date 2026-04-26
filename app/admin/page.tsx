@@ -1,22 +1,15 @@
 import {
   ArrowRight,
-  BarChart3,
   Bell,
-  Calendar,
   ChevronDown,
-  Columns3,
   Hammer,
-  Hexagon,
-  Inbox,
-  LayoutDashboard,
   Plus,
   TrendingDown,
   TrendingUp,
-  Users,
 } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AdminSidebar } from "../components/admin-sidebar";
 import { AdminSearchInput } from "./admin-search-input";
 import { PipelineBoard } from "./pipeline-board";
 import { RecentActivitySection } from "./recent-activity-section";
@@ -76,34 +69,6 @@ function heatClasses(heat: ReturnType<typeof leadHeat>) {
   if (heat === "Hot") return "bg-red-100 text-red-700";
   if (heat === "Warm") return "bg-amber-100 text-amber-700";
   return "bg-sky-100 text-sky-700";
-}
-
-function SidebarItem({
-  icon: Icon,
-  href,
-  active = false,
-  prefetch = false,
-  label,
-}: {
-  icon: LucideIcon;
-  href: string;
-  active?: boolean;
-  prefetch?: boolean;
-  label: string;
-}) {
-  return (
-    <Link
-      href={href}
-      prefetch={prefetch}
-      className={`relative flex h-12 w-12 items-center justify-center rounded-md transition-colors ${
-        active ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-background hover:text-foreground"
-      }`}
-      aria-label={label}
-    >
-      {active ? <span className="absolute left-0 top-1/2 h-6 w-1 -translate-y-1/2 rounded-r bg-primary" /> : null}
-      <Icon className="size-5" aria-hidden />
-    </Link>
-  );
 }
 
 function StatCard({
@@ -190,25 +155,7 @@ export default async function AdminPage({
         Skip to main content
       </a>
 
-      <nav
-        aria-label="Admin sections"
-        className="fixed inset-y-0 left-0 z-40 hidden w-20 shrink-0 flex-col items-center border-r border-border bg-secondary/80 py-6 shadow-[0_0_32px_rgba(0,0,0,0.06)] backdrop-blur md:flex"
-      >
-        <div className="mb-8 flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-          <Hexagon className="size-5" aria-hidden />
-        </div>
-        <div className="flex w-full flex-1 flex-col items-center gap-6">
-          <SidebarItem icon={LayoutDashboard} label="Dashboard" href="/admin" active={tab === "overview"} />
-          <SidebarItem icon={Columns3} label="Pipeline" href="/admin?tab=pipeline" active={tab === "pipeline"} />
-          <SidebarItem icon={Users} label="Clients" href="/admin" />
-          <SidebarItem icon={Calendar} label="Schedule" href="/admin" />
-          <SidebarItem icon={BarChart3} label="Financial Insights" href="/financial-insights" />
-          <SidebarItem icon={Inbox} label="Inbox" href="/admin" />
-        </div>
-        <div className="mt-auto flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-xs font-semibold">
-          VS
-        </div>
-      </nav>
+      <AdminSidebar activeItem={tab === "pipeline" ? "pipeline" : "dashboard"} />
 
       <div className="flex w-full flex-1 flex-col md:pl-20">
         <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-4 border-b border-border bg-background/90 px-4 shadow-sm backdrop-blur md:px-6">

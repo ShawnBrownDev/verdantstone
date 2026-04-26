@@ -1,7 +1,6 @@
-import { BarChart3, Calendar, Columns3, Hexagon, Inbox, LayoutDashboard, TrendingDown, TrendingUp, Users } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { BarChart3, TrendingDown, TrendingUp } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { AdminSidebar } from "../components/admin-sidebar";
 import { fetchFinancialInsightsData, type FinancialEntryType } from "../lib/financial-insights-data";
 
 export const metadata: Metadata = {
@@ -21,32 +20,6 @@ const dateFormat = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
 });
 
-function SidebarItem({
-  icon: Icon,
-  href,
-  active = false,
-  label,
-}: {
-  icon: LucideIcon;
-  href: string;
-  active?: boolean;
-  label: string;
-}) {
-  return (
-    <Link
-      href={href}
-      prefetch={false}
-      className={`relative flex h-12 w-12 items-center justify-center rounded-md transition-colors ${
-        active ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-background hover:text-foreground"
-      }`}
-      aria-label={label}
-    >
-      {active ? <span className="absolute left-0 top-1/2 h-6 w-1 -translate-y-1/2 rounded-r bg-primary" /> : null}
-      <Icon className="size-5" aria-hidden />
-    </Link>
-  );
-}
-
 function typePill(type: FinancialEntryType) {
   if (type === "asset") return "bg-emerald-100 text-emerald-700";
   if (type === "liability") return "bg-red-100 text-red-700";
@@ -58,22 +31,7 @@ export default async function FinancialInsightsPage() {
 
   return (
     <div className="flex min-h-screen bg-background text-foreground">
-      <nav
-        aria-label="Admin sections"
-        className="fixed inset-y-0 left-0 z-40 hidden w-20 shrink-0 flex-col items-center border-r border-border bg-secondary/80 py-6 shadow-[0_0_32px_rgba(0,0,0,0.06)] backdrop-blur md:flex"
-      >
-        <div className="mb-8 flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-          <Hexagon className="size-5" aria-hidden />
-        </div>
-        <div className="flex w-full flex-1 flex-col items-center gap-6">
-          <SidebarItem icon={LayoutDashboard} label="Dashboard" href="/admin" />
-          <SidebarItem icon={Columns3} label="Pipeline" href="/admin?tab=pipeline" />
-          <SidebarItem icon={Users} label="Clients" href="/admin" />
-          <SidebarItem icon={Calendar} label="Schedule" href="/admin" />
-          <SidebarItem icon={BarChart3} label="Financial Insights" href="/financial-insights" active />
-          <SidebarItem icon={Inbox} label="Inbox" href="/admin" />
-        </div>
-      </nav>
+      <AdminSidebar activeItem="financial-insights" />
 
       <main className="flex w-full flex-1 flex-col p-4 md:pl-28 md:pr-8 md:pt-8">
         <section className="mb-8">
