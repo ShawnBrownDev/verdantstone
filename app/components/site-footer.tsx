@@ -111,13 +111,29 @@ export function SiteFooter() {
           </ul>
         </div>
       </div>
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between border-t border-primary-foreground/10 pt-8 font-body text-sm text-primary-foreground/50 md:flex-row">
-        <p>© {year} Verdant &amp; Stone. All rights reserved.</p>
-        <div className="mt-4 flex gap-6 md:mt-0">
-          <Link href="#" className="hover:text-primary-foreground/80">
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 border-t border-primary-foreground/10 pt-8 md:flex-row md:items-center md:justify-between md:gap-4">
+        <p className="order-2 text-center font-body text-sm text-primary-foreground/50 md:order-1 md:text-left">
+          © {year}  Verdant &amp; Stone. All rights reserved.
+        </p>
+        <Link
+          href="https://nextwaveweb.tech/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="order-1 group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-accent/60 bg-accent/15 px-5 py-2.5 font-body text-sm shadow-[0_0_24px_rgba(212,175,55,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] transition-all duration-200 hover:-translate-y-0.5 hover:border-accent hover:bg-accent/25 hover:shadow-[0_0_32px_rgba(212,175,55,0.35),0_8px_24px_rgba(0,0,0,0.15)] md:order-2"
+        >
+          <span className="pointer-events-none absolute inset-0 bg-gradient-to-r from-accent/0 via-white/10 to-accent/0 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden />
+          <span className="relative text-[10px] font-bold uppercase tracking-[0.2em] text-primary-foreground/80">
+            Built by
+          </span>
+          <span className="relative font-headings text-base font-bold tracking-tight text-accent">
+            NextWaveWeb
+          </span>
+        </Link>
+        <div className="order-3 flex gap-6 font-body text-sm text-primary-foreground/50">
+          <Link href="#" className="transition-colors hover:text-primary-foreground">
             Privacy Policy
           </Link>
-          <Link href="#" className="hover:text-primary-foreground/80">
+          <Link href="#" className="transition-colors hover:text-primary-foreground">
             Terms of Service
           </Link>
         </div>
