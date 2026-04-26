@@ -4,7 +4,12 @@ import { getSql } from "@/app/lib/db";
 
 export async function GET() {
   const sql = getSql();
-  const leads = await sql<{
+  const leads = (await sql`
+    SELECT id, name, email, phone, service, budget, status, created_at::text AS created_at
+    FROM leads
+    ORDER BY created_at DESC
+    LIMIT 100
+  `) as {
     id: number;
     name: string;
     email: string;
@@ -13,12 +18,7 @@ export async function GET() {
     budget: number;
     status: string;
     created_at: string;
-  }[]>`
-    SELECT id, name, email, phone, service, budget, status, created_at::text AS created_at
-    FROM leads
-    ORDER BY created_at DESC
-    LIMIT 100
-  `;
+  }[];
 
   return NextResponse.json({ leads });
 }
