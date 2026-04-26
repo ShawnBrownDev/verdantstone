@@ -43,6 +43,13 @@ export function SiteHeader() {
       >
         <Leaf className="size-7 shrink-0" aria-hidden />
         <span>Verdant &amp; Stone</span>
+        <span
+          className="rounded-full border-2 border-accent bg-accent px-3 py-1.5 text-xs font-body font-extrabold leading-none tracking-[0.2em] text-primary shadow-[0_0_0_2px_rgba(27,48,34,0.12),0_6px_16px_rgba(212,175,55,0.35)]"
+          aria-label="Demo environment"
+          title="Demo environment"
+        >
+          DEMO
+        </span>
       </Link>
 
       <nav
@@ -69,6 +76,12 @@ export function SiteHeader() {
           className="hidden rounded-full bg-primary px-5 py-2 text-center font-body text-sm font-medium uppercase tracking-wider text-primary-foreground sm:inline-flex sm:items-center sm:justify-center"
         >
           Request Quote
+        </Link>
+        <Link
+          href="/admin"
+          className="hidden rounded-full border border-primary/20 bg-background px-4 py-2 text-center font-body text-sm font-semibold uppercase tracking-wider text-primary transition-colors hover:bg-primary/10 sm:inline-flex sm:items-center sm:justify-center"
+        >
+          Admin
         </Link>
 
         <button
@@ -113,6 +126,13 @@ export function SiteHeader() {
               onClick={closeMenu}
             >
               Request Quote
+            </Link>
+            <Link
+              href="/admin"
+              className="rounded-full border border-primary/20 bg-background px-5 py-3 text-center text-sm font-semibold uppercase tracking-wider text-primary"
+              onClick={closeMenu}
+            >
+              Admin Dashboard
             </Link>
           </div>
         </div>
