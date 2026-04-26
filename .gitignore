@@ -31,8 +31,6 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
-.env*
-.env.local
 Agents.md
 /db/migrations
 
@@ -43,3 +41,4 @@ Agents.md
 *.tsbuildinfo
 next-env.d.ts
 AGENTS.md
+config.bat

@@ -63,6 +63,23 @@ export function ImpactBeforeAfter({
 
   const beforeClipWidth = Math.max(positionPct, 2);
   const beforeInnerWidthPct = (100 / beforeClipWidth) * 100;
+  const safeBeforeSrc = beforeSrc?.trim();
+  const safeAfterSrc = afterSrc?.trim();
+  const safeBeforeAlt = beforeAlt?.trim() || "Before project image";
+  const safeAfterAlt = afterAlt?.trim() || "After project image";
+
+  if (!safeBeforeSrc || !safeAfterSrc) {
+    return (
+      <div
+        className={`relative aspect-[4/3] w-full overflow-hidden rounded-[var(--radius-xl)] border border-border bg-muted/60 ${className ?? ""}`}
+        aria-label={label}
+      >
+        <div className="flex h-full items-center justify-center p-6 text-center font-body text-sm text-muted-foreground">
+          Project images unavailable for this comparison.
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -98,8 +115,8 @@ export function ImpactBeforeAfter({
     >
       <div className="absolute inset-0 h-full w-full">
         <Image
-          src={afterSrc}
-          alt={afterAlt}
+          src={safeAfterSrc}
+          alt={safeAfterAlt}
           fill
           sizes={sizes}
           className="object-cover"
@@ -116,8 +133,8 @@ export function ImpactBeforeAfter({
       >
         <div className="relative h-full min-h-0" style={{ width: `${beforeInnerWidthPct}%` }}>
           <Image
-            src={beforeSrc}
-            alt={beforeAlt}
+            src={safeBeforeSrc}
+            alt={safeBeforeAlt}
             fill
             sizes={sizes}
             className="object-cover grayscale filter"
