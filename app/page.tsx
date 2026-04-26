@@ -2,6 +2,7 @@ import { EstimateForm } from "./components/estimate-form";
 import { FloatingCallButton } from "./components/floating-call";
 import { HeroSection } from "./components/hero-section";
 import { ImpactSection } from "./components/impact-section";
+import { ProjectsShowcase } from "./components/projects-showcase";
 import { ServiceGrid } from "./components/service-grid";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
@@ -21,6 +22,7 @@ export default function Home() {
         <HeroSection />
         <SocialProof />
         <ServiceGrid />
+        <ProjectsShowcase />
         <ImpactSection />
         <EstimateForm />
       </main>

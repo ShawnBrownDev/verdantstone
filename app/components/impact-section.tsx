@@ -1,11 +1,10 @@
 import Image from "next/image";
-import { ChevronsLeftRight } from "lucide-react";
 import { siteImages } from "../lib/site-images";
+import { ImpactBeforeAfter } from "./impact-before-after";
 
 export function ImpactSection() {
   return (
     <section
-      id="portfolio"
       className="border-b border-primary/20 bg-primary px-8 py-24 text-primary-foreground md:px-16 md:py-32"
       aria-labelledby="impact-heading"
     >
@@ -50,41 +49,14 @@ export function ImpactSection() {
             </p>
           </div>
         </div>
-        <div
-          className="relative aspect-[4/3] w-full overflow-hidden rounded-[var(--radius-xl)] bg-secondary shadow-2xl md:w-1/2"
-          aria-label="Before and after comparison: unfinished backyard versus finished luxury patio with fire pit"
-        >
-          <div className="absolute inset-0 z-10 w-1/2 overflow-hidden border-r-4 border-white">
-            <div className="relative h-full w-[200%] min-h-0">
-              <Image
-                src={siteImages.impact.before}
-                alt="Before: muddy unfinished backyard with patchy grass"
-                fill
-                sizes="50vw"
-                className="object-cover grayscale filter"
-              />
-            </div>
-            <div className="absolute left-4 top-4 rounded bg-black/60 px-3 py-1 font-body text-xs font-bold uppercase tracking-wider text-white">
-              Before
-            </div>
-          </div>
-          <div className="absolute inset-0 h-full w-full">
-            <Image
-              src={siteImages.impact.after}
-              alt="After: luxury outdoor patio with fire pit and ambient lighting"
-              fill
-              sizes="50vw"
-              className="object-cover"
-            />
-            <div className="absolute right-4 top-4 rounded bg-accent/90 px-3 py-1 font-body text-xs font-bold uppercase tracking-wider text-accent-foreground">
-              After
-            </div>
-          </div>
-          <div className="absolute inset-y-0 left-1/2 z-20 flex w-1 -translate-x-1/2 items-center justify-center bg-white shadow-md">
-            <div className="flex size-10 items-center justify-center rounded-full bg-white text-primary shadow-lg ring-4 ring-black/10">
-              <ChevronsLeftRight className="size-5" aria-hidden />
-            </div>
-          </div>
+        <div className="w-full md:w-1/2">
+          <ImpactBeforeAfter
+            beforeSrc={siteImages.impact.before}
+            afterSrc={siteImages.impact.after}
+            beforeAlt="Before: muddy unfinished backyard with patchy grass"
+            afterAlt="After: luxury outdoor patio with fire pit and ambient lighting"
+            label="Before and after comparison: unfinished backyard versus finished luxury patio with fire pit"
+          />
         </div>
       </div>
     </section>
